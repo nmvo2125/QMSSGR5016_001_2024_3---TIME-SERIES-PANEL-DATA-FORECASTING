@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:4630/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Nhu Vo">
+<meta name="dcterms.date" content="2024-11-17">
+
+<title>Time Series Lab 2</title>
+<style class="anchorjs"></style><style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="./Nhu Vo Time Series Lab 2 FINAL_files/clipboard.min.js.download"></script>
+<script src="./Nhu Vo Time Series Lab 2 FINAL_files/quarto.js.download"></script>
+<script src="./Nhu Vo Time Series Lab 2 FINAL_files/popper.min.js.download"></script>
+<script src="./Nhu Vo Time Series Lab 2 FINAL_files/tippy.umd.min.js.download"></script>
+<script src="./Nhu Vo Time Series Lab 2 FINAL_files/anchor.min.js.download"></script>
+<link href="./Nhu Vo Time Series Lab 2 FINAL_files/tippy.css" rel="stylesheet">
+<link href="./Nhu Vo Time Series Lab 2 FINAL_files/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="./Nhu Vo Time Series Lab 2 FINAL_files/bootstrap.min.js.download"></script>
+<link href="./Nhu Vo Time Series Lab 2 FINAL_files/bootstrap-icons.css" rel="stylesheet">
+<link href="./Nhu Vo Time Series Lab 2 FINAL_files/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+<style>.ansi-display{font-family:monospace;white-space:pre-wrap;--ansiBlack: #000000;--ansiRed: #cd3131;--ansiGreen: #00BC00;--ansiYellow: #949800;--ansiBlue: #0451a5;--ansiMagenta: #bc05bc;--ansiCyan: #0598bc;--ansiWhite: #555555;--ansiBrightBlack: #666666;--ansiBrightRed: #cd3131;--ansiBrightGreen: #14CE14;--ansiBrightYellow: #b5ba00;--ansiBrightBlue: #0451a5;--ansiBrightMagenta: #bc05bc;--ansiBrightCyan: #0598bc;--ansiBrightWhite: #a5a5a5}.dark-mode .ansi-display{--ansiBlack: #000000;--ansiRed: #cd3131;--ansiGreen: #0DBC79;--ansiYellow: #e5e510;--ansiBlue: #2472c8;--ansiMagenta: #bc3fbc;--ansiCyan: #11a8cd;--ansiWhite: #e5e5e5;--ansiBrightBlack: #666666;--ansiBrightRed: #f14c4c;--ansiBrightGreen: #23d18b;--ansiBrightYellow: #f5f543;--ansiBrightBlue: #3b8eea;--ansiBrightMagenta: #d670d6;--ansiBrightCyan: #29b8db;--ansiBrightWhite: #e5e5e5}@keyframes ansi-displaly-run-blink{50%{opacity:0}}.fui-FluentProvider h2{border-bottom:none;padding-bottom:0}</style><style data-make-styles-bucket="d" data-priority="0"></style><style id="fui-FluentProviderr0"></style></head>
+
+<body class="fullcontent quarto-light" data-tabster="{&quot;root&quot;:{}}">
+
+<i tabindex="0" role="none" data-tabster-dummy="" aria-hidden="true" style="position: fixed; height: 1px; width: 1px; opacity: 0.001; z-index: -1; content-visibility: hidden; top: 0px; left: 0px;"></i><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Time Series Lab 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nhu Vo </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 17, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="http://localhost:4630/#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the necessary packages</span></span>
+<span id="cb1-2"><a href="http://localhost:4630/#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-3"><a href="http://localhost:4630/#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="http://localhost:4630/#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb5-2"><a href="http://localhost:4630/#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="http://localhost:4630/#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to dynamically get the latest biweekly file based on the week number in the filename</span></span>
+<span id="cb5-4"><a href="http://localhost:4630/#cb5-4" aria-hidden="true" tabindex="-1"></a>get_latest_biweekly_file <span class="ot">&lt;-</span> <span class="cf">function</span>(directory) {</span>
+<span id="cb5-5"><a href="http://localhost:4630/#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># List all files in the specified directory</span></span>
+<span id="cb5-6"><a href="http://localhost:4630/#cb5-6" aria-hidden="true" tabindex="-1"></a>  files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(directory, <span class="at">pattern =</span> <span class="st">"stata_widedata_week_</span><span class="sc">\\</span><span class="st">d+_</span><span class="sc">\\</span><span class="st">d{2}[a-zA-Z]+</span><span class="sc">\\</span><span class="st">d{4}.dta"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-7"><a href="http://localhost:4630/#cb5-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-8"><a href="http://localhost:4630/#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the week number from each filename</span></span>
+<span id="cb5-9"><a href="http://localhost:4630/#cb5-9" aria-hidden="true" tabindex="-1"></a>  week_numbers <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(files, <span class="st">"(?&lt;=week_)</span><span class="sc">\\</span><span class="st">d+"</span>))</span>
+<span id="cb5-10"><a href="http://localhost:4630/#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="http://localhost:4630/#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find the file with the highest week number</span></span>
+<span id="cb5-12"><a href="http://localhost:4630/#cb5-12" aria-hidden="true" tabindex="-1"></a>  latest_file <span class="ot">&lt;-</span> files[<span class="fu">which.max</span>(week_numbers)]</span>
+<span id="cb5-13"><a href="http://localhost:4630/#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(latest_file)</span>
+<span id="cb5-14"><a href="http://localhost:4630/#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-15"><a href="http://localhost:4630/#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="http://localhost:4630/#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Define paths and load the baseline and latest biweekly datasets</span></span>
+<span id="cb5-17"><a href="http://localhost:4630/#cb5-17" aria-hidden="true" tabindex="-1"></a>baseline_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"P:/Dynamics of Contra in Eswatini/1. Baseline code and data/final datasets/DYCE-PII_SHIMS3-NOPII_w-biweekly-ID_29Sept2024.dta"</span>)</span>
+<span id="cb5-18"><a href="http://localhost:4630/#cb5-18" aria-hidden="true" tabindex="-1"></a>latest_biweekly_file <span class="ot">&lt;-</span> <span class="fu">get_latest_biweekly_file</span>(<span class="st">"P:/Dynamics of Contra in Eswatini/2. Biweekly/5. CLEANED DATA"</span>)</span>
+<span id="cb5-19"><a href="http://localhost:4630/#cb5-19" aria-hidden="true" tabindex="-1"></a>biweekly_data <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(latest_biweekly_file)</span>
+<span id="cb5-20"><a href="http://localhost:4630/#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="http://localhost:4630/#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Select relevant columns in biweekly data (all columns that start with specific patterns)</span></span>
+<span id="cb5-22"><a href="http://localhost:4630/#cb5-22" aria-hidden="true" tabindex="-1"></a>biweekly_subset <span class="ot">&lt;-</span> biweekly_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-23"><a href="http://localhost:4630/#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(caseid,</span>
+<span id="cb5-24"><a href="http://localhost:4630/#cb5-24" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"relupdate_w"</span>),</span>
+<span id="cb5-25"><a href="http://localhost:4630/#cb5-25" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"cursexrel_w"</span>),</span>
+<span id="cb5-26"><a href="http://localhost:4630/#cb5-26" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"curromrel_w"</span>),</span>
+<span id="cb5-27"><a href="http://localhost:4630/#cb5-27" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"final_outcome_w"</span>),</span>
+<span id="cb5-28"><a href="http://localhost:4630/#cb5-28" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"contmethuse_w"</span>),   <span class="co"># Include contraception method use</span></span>
+<span id="cb5-29"><a href="http://localhost:4630/#cb5-29" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"cmethoduse_2wk"</span>)) <span class="co"># Include contraception method use in the past 2 weeks</span></span>
+<span id="cb5-30"><a href="http://localhost:4630/#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="http://localhost:4630/#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Merge the baseline and biweekly data on 'id' from baseline and 'caseid' from biweekly</span></span>
+<span id="cb5-32"><a href="http://localhost:4630/#cb5-32" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> baseline_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-33"><a href="http://localhost:4630/#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(biweekly_subset, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"id"</span> <span class="ot">=</span> <span class="st">"caseid"</span>))</span>
+<span id="cb5-34"><a href="http://localhost:4630/#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="http://localhost:4630/#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Remove rows where relstartyr or relstartmonth is missing</span></span>
+<span id="cb5-36"><a href="http://localhost:4630/#cb5-36" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> merged_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-37"><a href="http://localhost:4630/#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(relstartyr) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(relstartmonth))</span>
+<span id="cb5-38"><a href="http://localhost:4630/#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="http://localhost:4630/#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Remove rows where relstartmonth indicates an unknown month (assuming -8 indicates "Don't Know" in the data)</span></span>
+<span id="cb5-40"><a href="http://localhost:4630/#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(merged_data<span class="sc">$</span>relstartmonth)) {</span>
+<span id="cb5-41"><a href="http://localhost:4630/#cb5-41" aria-hidden="true" tabindex="-1"></a>  merged_data<span class="sc">$</span>relstartmonth <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(merged_data<span class="sc">$</span>relstartmonth))</span>
+<span id="cb5-42"><a href="http://localhost:4630/#cb5-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-43"><a href="http://localhost:4630/#cb5-43" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> merged_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-44"><a href="http://localhost:4630/#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(relstartmonth <span class="sc">!=</span> <span class="sc">-</span><span class="dv">8</span>)</span>
+<span id="cb5-45"><a href="http://localhost:4630/#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="http://localhost:4630/#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Calculate the baseline relationship duration in months and weeks</span></span>
+<span id="cb5-47"><a href="http://localhost:4630/#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the end date as April 2024</span></span>
+<span id="cb5-48"><a href="http://localhost:4630/#cb5-48" aria-hidden="true" tabindex="-1"></a>end_month <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb5-49"><a href="http://localhost:4630/#cb5-49" aria-hidden="true" tabindex="-1"></a>end_year <span class="ot">&lt;-</span> <span class="dv">2024</span></span>
+<span id="cb5-50"><a href="http://localhost:4630/#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="http://localhost:4630/#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the duration in months and then convert to weeks</span></span>
+<span id="cb5-52"><a href="http://localhost:4630/#cb5-52" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> merged_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-53"><a href="http://localhost:4630/#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-54"><a href="http://localhost:4630/#cb5-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">rls_baseline_duration_months =</span> (end_year <span class="sc">-</span> relstartyr) <span class="sc">*</span> <span class="dv">12</span> <span class="sc">+</span> (end_month <span class="sc">-</span> relstartmonth),</span>
+<span id="cb5-55"><a href="http://localhost:4630/#cb5-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">rls_baseline_duration_weeks =</span> rls_baseline_duration_months <span class="sc">*</span> <span class="fl">4.345</span>  <span class="co"># Approximate weeks per month</span></span>
+<span id="cb5-56"><a href="http://localhost:4630/#cb5-56" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-57"><a href="http://localhost:4630/#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="http://localhost:4630/#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7: Filter the dataset to include only the necessary columns, ensuring 'id' is retained</span></span>
+<span id="cb5-59"><a href="http://localhost:4630/#cb5-59" aria-hidden="true" tabindex="-1"></a>output_data <span class="ot">&lt;-</span> merged_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-60"><a href="http://localhost:4630/#cb5-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, relstartyr, relstartmonth, rls_baseline_duration_months, rls_baseline_duration_weeks,</span>
+<span id="cb5-61"><a href="http://localhost:4630/#cb5-61" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"relupdate_w"</span>), <span class="fu">starts_with</span>(<span class="st">"cursexrel_w"</span>), <span class="fu">starts_with</span>(<span class="st">"curromrel_w"</span>),</span>
+<span id="cb5-62"><a href="http://localhost:4630/#cb5-62" aria-hidden="true" tabindex="-1"></a>         <span class="fu">starts_with</span>(<span class="st">"final_outcome_w"</span>), <span class="fu">starts_with</span>(<span class="st">"contmethuse_w"</span>), <span class="fu">starts_with</span>(<span class="st">"cmethoduse_2wk"</span>))</span>
+<span id="cb5-63"><a href="http://localhost:4630/#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-64"><a href="http://localhost:4630/#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the output to verify the result</span></span>
+<span id="cb5-65"><a href="http://localhost:4630/#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Final output (first 6 rows):"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Final output (first 6 rows):"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="http://localhost:4630/#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(output_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 101
+     id relstartyr relstartmonth   rls_baseline_duratio…¹ rls_baseline_duratio…²
+  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl+lbl&gt;                        &lt;dbl&gt;                  &lt;dbl&gt;
+1   235       2019  2 [2. Februar…                     62                  269. 
+2   287       2023 12 [12. Decemb…                      4                   17.4
+3    37       2018  6 [6. June]                        70                  304. 
+4   196       2023  3 [3. March]                       13                   56.5
+5   237       2023  6 [6. June]                        10                   43.4
+6   194       2018  3 [3. March]                       73                  317. 
+# ℹ abbreviated names: ¹​rls_baseline_duration_months,
+#   ²​rls_baseline_duration_weeks
+# ℹ 96 more variables: relupdate_w1 &lt;dbl+lbl&gt;, relupdate_w2 &lt;dbl+lbl&gt;,
+#   relupdate_w3 &lt;dbl+lbl&gt;, relupdate_w4 &lt;dbl+lbl&gt;, relupdate_w5 &lt;dbl+lbl&gt;,
+#   relupdate_w6 &lt;dbl+lbl&gt;, relupdate_w7 &lt;dbl+lbl&gt;, relupdate_w8 &lt;dbl+lbl&gt;,
+#   relupdate_w9 &lt;dbl+lbl&gt;, relupdate_w10 &lt;dbl+lbl&gt;, relupdate_w11 &lt;dbl+lbl&gt;,
+#   relupdate_w12 &lt;dbl+lbl&gt;, relupdate_w13 &lt;dbl+lbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="http://localhost:4630/#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 8: Initialize new columns in output_data for each week</span></span>
+<span id="cb9-2"><a href="http://localhost:4630/#cb9-2" aria-hidden="true" tabindex="-1"></a>weekCount <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">as.numeric</span>(<span class="fu">str_extract</span>(<span class="fu">names</span>(output_data), <span class="st">"</span><span class="sc">\\</span><span class="st">d+$"</span>)), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Automatically detect max week count</span></span>
+<span id="cb9-3"><a href="http://localhost:4630/#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="http://localhost:4630/#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the columns for each week and set up baseline columns (including `incremented_w0`)</span></span>
+<span id="cb9-5"><a href="http://localhost:4630/#cb9-5" aria-hidden="true" tabindex="-1"></a>output_data<span class="sc">$</span>incremented_w0 <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># Initialize incremented_w0 for baseline</span></span>
+<span id="cb9-6"><a href="http://localhost:4630/#cb9-6" aria-hidden="true" tabindex="-1"></a>output_data<span class="sc">$</span>relationship_duration_w0 <span class="ot">&lt;-</span> output_data<span class="sc">$</span>rls_baseline_duration_weeks  <span class="co"># Set baseline relationship duration</span></span>
+<span id="cb9-7"><a href="http://localhost:4630/#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="http://localhost:4630/#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (week <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>weekCount) {</span>
+<span id="cb9-9"><a href="http://localhost:4630/#cb9-9" aria-hidden="true" tabindex="-1"></a>  output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb9-10"><a href="http://localhost:4630/#cb9-10" aria-hidden="true" tabindex="-1"></a>  output_data[[<span class="fu">paste0</span>(<span class="st">"incremented_w"</span>, week)]] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-11"><a href="http://localhost:4630/#cb9-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-12"><a href="http://localhost:4630/#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="http://localhost:4630/#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 9: Iterate over each row in output_data</span></span>
+<span id="cb9-14"><a href="http://localhost:4630/#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(output_data)) {</span>
+<span id="cb9-15"><a href="http://localhost:4630/#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize baseline week duration</span></span>
+<span id="cb9-16"><a href="http://localhost:4630/#cb9-16" aria-hidden="true" tabindex="-1"></a>  prevWeekDur <span class="ot">&lt;-</span> output_data<span class="sc">$</span>relationship_duration_w0[i]</span>
+<span id="cb9-17"><a href="http://localhost:4630/#cb9-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-18"><a href="http://localhost:4630/#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (week <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>weekCount) {</span>
+<span id="cb9-19"><a href="http://localhost:4630/#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set default incremented_w for the current week to 0</span></span>
+<span id="cb9-20"><a href="http://localhost:4630/#cb9-20" aria-hidden="true" tabindex="-1"></a>    output_data[[<span class="fu">paste0</span>(<span class="st">"incremented_w"</span>, week)]][i] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-21"><a href="http://localhost:4630/#cb9-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-22"><a href="http://localhost:4630/#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ensure `relupdate_w` is not missing before evaluating the conditions</span></span>
+<span id="cb9-23"><a href="http://localhost:4630/#cb9-23" aria-hidden="true" tabindex="-1"></a>    relupdate_val <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"relupdate_w"</span>, week)]][i]</span>
+<span id="cb9-24"><a href="http://localhost:4630/#cb9-24" aria-hidden="true" tabindex="-1"></a>    cursexrel_val <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"cursexrel_w"</span>, week)]][i]</span>
+<span id="cb9-25"><a href="http://localhost:4630/#cb9-25" aria-hidden="true" tabindex="-1"></a>    curromrel_val <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"curromrel_w"</span>, week)]][i]</span>
+<span id="cb9-26"><a href="http://localhost:4630/#cb9-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-27"><a href="http://localhost:4630/#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Condition 1: If relupdate_w equals 0, reset relationship_duration_w to 0</span></span>
+<span id="cb9-28"><a href="http://localhost:4630/#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(relupdate_val) <span class="sc">&amp;&amp;</span> relupdate_val <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb9-29"><a href="http://localhost:4630/#cb9-29" aria-hidden="true" tabindex="-1"></a>      output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-30"><a href="http://localhost:4630/#cb9-30" aria-hidden="true" tabindex="-1"></a>      prevWeekDur <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-31"><a href="http://localhost:4630/#cb9-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-32"><a href="http://localhost:4630/#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Condition 2: If relupdate_w, cursexrel_w, or curromrel_w equals 1, increment relationship_duration_w by 2</span></span>
+<span id="cb9-33"><a href="http://localhost:4630/#cb9-33" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(relupdate_val) <span class="sc">&amp;&amp;</span> relupdate_val <span class="sc">==</span> <span class="dv">1</span> <span class="sc">||</span></span>
+<span id="cb9-34"><a href="http://localhost:4630/#cb9-34" aria-hidden="true" tabindex="-1"></a>               (<span class="sc">!</span><span class="fu">is.na</span>(cursexrel_val) <span class="sc">&amp;&amp;</span> cursexrel_val <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">||</span></span>
+<span id="cb9-35"><a href="http://localhost:4630/#cb9-35" aria-hidden="true" tabindex="-1"></a>               (<span class="sc">!</span><span class="fu">is.na</span>(curromrel_val) <span class="sc">&amp;&amp;</span> curromrel_val <span class="sc">==</span> <span class="dv">1</span>)) {</span>
+<span id="cb9-36"><a href="http://localhost:4630/#cb9-36" aria-hidden="true" tabindex="-1"></a>      output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i] <span class="ot">&lt;-</span> prevWeekDur <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb9-37"><a href="http://localhost:4630/#cb9-37" aria-hidden="true" tabindex="-1"></a>      prevWeekDur <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i]</span>
+<span id="cb9-38"><a href="http://localhost:4630/#cb9-38" aria-hidden="true" tabindex="-1"></a>      output_data[[<span class="fu">paste0</span>(<span class="st">"incremented_w"</span>, week)]][i] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-39"><a href="http://localhost:4630/#cb9-39" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-40"><a href="http://localhost:4630/#cb9-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Condition 3: If relupdate_w is NA, check future weeks and previous increment status</span></span>
+<span id="cb9-41"><a href="http://localhost:4630/#cb9-41" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.na</span>(relupdate_val)) {</span>
+<span id="cb9-42"><a href="http://localhost:4630/#cb9-42" aria-hidden="true" tabindex="-1"></a>      prevWeekIncremented <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"incremented_w"</span>, week <span class="sc">-</span> <span class="dv">1</span>)]][i]</span>
+<span id="cb9-43"><a href="http://localhost:4630/#cb9-43" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb9-44"><a href="http://localhost:4630/#cb9-44" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Restrict future columns to avoid out-of-bounds error</span></span>
+<span id="cb9-45"><a href="http://localhost:4630/#cb9-45" aria-hidden="true" tabindex="-1"></a>      futureRelUpdates <span class="ot">&lt;-</span> output_data[i, <span class="fu">grep</span>(<span class="st">"^relupdate_w"</span>, <span class="fu">names</span>(output_data))] <span class="sc">%&gt;%</span></span>
+<span id="cb9-46"><a href="http://localhost:4630/#cb9-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> .[(week <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">min</span>(<span class="fu">length</span>(.), weekCount)]</span>
+<span id="cb9-47"><a href="http://localhost:4630/#cb9-47" aria-hidden="true" tabindex="-1"></a>      futureSexRel <span class="ot">&lt;-</span> output_data[i, <span class="fu">grep</span>(<span class="st">"^cursexrel_w"</span>, <span class="fu">names</span>(output_data))] <span class="sc">%&gt;%</span></span>
+<span id="cb9-48"><a href="http://localhost:4630/#cb9-48" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> .[(week <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">min</span>(<span class="fu">length</span>(.), weekCount)]</span>
+<span id="cb9-49"><a href="http://localhost:4630/#cb9-49" aria-hidden="true" tabindex="-1"></a>      futureRomRel <span class="ot">&lt;-</span> output_data[i, <span class="fu">grep</span>(<span class="st">"^curromrel_w"</span>, <span class="fu">names</span>(output_data))] <span class="sc">%&gt;%</span></span>
+<span id="cb9-50"><a href="http://localhost:4630/#cb9-50" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> .[(week <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">min</span>(<span class="fu">length</span>(.), weekCount)]</span>
+<span id="cb9-51"><a href="http://localhost:4630/#cb9-51" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb9-52"><a href="http://localhost:4630/#cb9-52" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Find the next non-NA relupdate_w value</span></span>
+<span id="cb9-53"><a href="http://localhost:4630/#cb9-53" aria-hidden="true" tabindex="-1"></a>      nextNonNAUpdate <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb9-54"><a href="http://localhost:4630/#cb9-54" aria-hidden="true" tabindex="-1"></a>        nextNonNA <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(futureRelUpdates)[<span class="dv">1</span>]</span>
+<span id="cb9-55"><a href="http://localhost:4630/#cb9-55" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(nextNonNA), nextNonNA, <span class="cn">NA</span>)</span>
+<span id="cb9-56"><a href="http://localhost:4630/#cb9-56" aria-hidden="true" tabindex="-1"></a>      }, <span class="at">error =</span> <span class="cf">function</span>(e) <span class="cn">NA</span>)</span>
+<span id="cb9-57"><a href="http://localhost:4630/#cb9-57" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb9-58"><a href="http://localhost:4630/#cb9-58" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Sub-condition: if nextNonNAUpdate is 0, do nothing (leave relationship_duration_w as NA)</span></span>
+<span id="cb9-59"><a href="http://localhost:4630/#cb9-59" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(nextNonNAUpdate) <span class="sc">&amp;&amp;</span> nextNonNAUpdate <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb9-60"><a href="http://localhost:4630/#cb9-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
+<span id="cb9-61"><a href="http://localhost:4630/#cb9-61" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-62"><a href="http://localhost:4630/#cb9-62" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Sub-condition: if nextNonNAUpdate is 1 and previous week was incremented, increment duration by 2</span></span>
+<span id="cb9-63"><a href="http://localhost:4630/#cb9-63" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(nextNonNAUpdate) <span class="sc">&amp;&amp;</span> nextNonNAUpdate <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> prevWeekIncremented <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb9-64"><a href="http://localhost:4630/#cb9-64" aria-hidden="true" tabindex="-1"></a>        output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i] <span class="ot">&lt;-</span> prevWeekDur <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb9-65"><a href="http://localhost:4630/#cb9-65" aria-hidden="true" tabindex="-1"></a>        prevWeekDur <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i]</span>
+<span id="cb9-66"><a href="http://localhost:4630/#cb9-66" aria-hidden="true" tabindex="-1"></a>        output_data[[<span class="fu">paste0</span>(<span class="st">"incremented_w"</span>, week)]][i] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-67"><a href="http://localhost:4630/#cb9-67" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb9-68"><a href="http://localhost:4630/#cb9-68" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Handle cases where all future relupdate_w values are NA</span></span>
+<span id="cb9-69"><a href="http://localhost:4630/#cb9-69" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> <span class="cf">if</span> (<span class="fu">is.na</span>(nextNonNAUpdate)) {</span>
+<span id="cb9-70"><a href="http://localhost:4630/#cb9-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ((<span class="dv">1</span> <span class="sc">%in%</span> futureSexRel <span class="sc">||</span> <span class="dv">1</span> <span class="sc">%in%</span> futureRomRel) <span class="sc">&amp;&amp;</span> prevWeekIncremented <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb9-71"><a href="http://localhost:4630/#cb9-71" aria-hidden="true" tabindex="-1"></a>          output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i] <span class="ot">&lt;-</span> prevWeekDur <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb9-72"><a href="http://localhost:4630/#cb9-72" aria-hidden="true" tabindex="-1"></a>          prevWeekDur <span class="ot">&lt;-</span> output_data[[<span class="fu">paste0</span>(<span class="st">"relationship_duration_w"</span>, week)]][i]</span>
+<span id="cb9-73"><a href="http://localhost:4630/#cb9-73" aria-hidden="true" tabindex="-1"></a>          output_data[[<span class="fu">paste0</span>(<span class="st">"incremented_w"</span>, week)]][i] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-74"><a href="http://localhost:4630/#cb9-74" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb9-75"><a href="http://localhost:4630/#cb9-75" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb9-76"><a href="http://localhost:4630/#cb9-76" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-77"><a href="http://localhost:4630/#cb9-77" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-78"><a href="http://localhost:4630/#cb9-78" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-79"><a href="http://localhost:4630/#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-80"><a href="http://localhost:4630/#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the modified output_data to verify the transformations</span></span>
+<span id="cb9-81"><a href="http://localhost:4630/#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Final output (first 6 rows):"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Final output (first 6 rows):"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="http://localhost:4630/#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(output_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 135
+     id relstartyr relstartmonth   rls_baseline_duratio…¹ rls_baseline_duratio…²
+  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl+lbl&gt;                        &lt;dbl&gt;                  &lt;dbl&gt;
+1   235       2019  2 [2. Februar…                     62                  269. 
+2   287       2023 12 [12. Decemb…                      4                   17.4
+3    37       2018  6 [6. June]                        70                  304. 
+4   196       2023  3 [3. March]                       13                   56.5
+5   237       2023  6 [6. June]                        10                   43.4
+6   194       2018  3 [3. March]                       73                  317. 
+# ℹ abbreviated names: ¹​rls_baseline_duration_months,
+#   ²​rls_baseline_duration_weeks
+# ℹ 130 more variables: relupdate_w1 &lt;dbl+lbl&gt;, relupdate_w2 &lt;dbl+lbl&gt;,
+#   relupdate_w3 &lt;dbl+lbl&gt;, relupdate_w4 &lt;dbl+lbl&gt;, relupdate_w5 &lt;dbl+lbl&gt;,
+#   relupdate_w6 &lt;dbl+lbl&gt;, relupdate_w7 &lt;dbl+lbl&gt;, relupdate_w8 &lt;dbl+lbl&gt;,
+#   relupdate_w9 &lt;dbl+lbl&gt;, relupdate_w10 &lt;dbl+lbl&gt;, relupdate_w11 &lt;dbl+lbl&gt;,
+#   relupdate_w12 &lt;dbl+lbl&gt;, relupdate_w13 &lt;dbl+lbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="http://localhost:4630/#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the code works</span></span>
+<span id="cb13-2"><a href="http://localhost:4630/#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="http://localhost:4630/#cb13-3" aria-hidden="true" tabindex="-1"></a>output_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="http://localhost:4630/#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="http://localhost:4630/#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"relationship_duration"</span>), <span class="fu">starts_with</span>(<span class="st">"relupdate"</span>), <span class="fu">starts_with</span>(<span class="st">"cursexrel"</span>), <span class="fu">starts_with</span>(<span class="st">"curromrel"</span>), <span class="fu">starts_with</span>(<span class="st">"final_outcome"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 82
+     id relationship_duration_w0 relationship_duration_w1 relationship_duratio…¹
+  &lt;dbl&gt;                    &lt;dbl&gt;                    &lt;dbl&gt;                  &lt;dbl&gt;
+1    15                     361.                     363.                   365.
+# ℹ abbreviated name: ¹​relationship_duration_w2
+# ℹ 78 more variables: relationship_duration_w3 &lt;dbl&gt;,
+#   relationship_duration_w4 &lt;dbl&gt;, relationship_duration_w5 &lt;dbl&gt;,
+#   relationship_duration_w6 &lt;dbl&gt;, relationship_duration_w7 &lt;dbl&gt;,
+#   relationship_duration_w8 &lt;dbl&gt;, relationship_duration_w9 &lt;dbl&gt;,
+#   relationship_duration_w10 &lt;dbl&gt;, relationship_duration_w11 &lt;dbl&gt;,
+#   relationship_duration_w12 &lt;dbl&gt;, relationship_duration_w13 &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="http://localhost:4630/#cb15-1" aria-hidden="true" tabindex="-1"></a>output_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="http://localhost:4630/#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">==</span> <span class="dv">172</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="http://localhost:4630/#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="fu">starts_with</span>(<span class="st">"relationship_duration"</span>), <span class="fu">starts_with</span>(<span class="st">"relupdate"</span>), <span class="fu">starts_with</span>(<span class="st">"cursexrel"</span>), <span class="fu">starts_with</span>(<span class="st">"curromrel"</span>), <span class="fu">starts_with</span>(<span class="st">"final_outcome"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 82
+     id relationship_duration_w0 relationship_duration_w1 relationship_duratio…¹
+  &lt;dbl&gt;                    &lt;dbl&gt;                    &lt;dbl&gt;                  &lt;dbl&gt;
+1   172                     374.                     376.                   378.
+# ℹ abbreviated name: ¹​relationship_duration_w2
+# ℹ 78 more variables: relationship_duration_w3 &lt;dbl&gt;,
+#   relationship_duration_w4 &lt;dbl&gt;, relationship_duration_w5 &lt;dbl&gt;,
+#   relationship_duration_w6 &lt;dbl&gt;, relationship_duration_w7 &lt;dbl&gt;,
+#   relationship_duration_w8 &lt;dbl&gt;, relationship_duration_w9 &lt;dbl&gt;,
+#   relationship_duration_w10 &lt;dbl&gt;, relationship_duration_w11 &lt;dbl&gt;,
+#   relationship_duration_w12 &lt;dbl&gt;, relationship_duration_w13 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<section id="survival-analysis" class="level1">
+<h1>Survival Analysis</h1>
+</section>
+<section id="a-state-what-your-failure-variable-is-and-how-you-expect-your-independent-variables-to-affect-it." class="level1">
+<h1>A) State what your “failure” variable is and how you expect your independent variables to affect it.</h1>
+<p>For survival analysis, the <strong>event variable</strong> usually focuses on a single type of event/event of interest. In survival analysis, “failure” is used more broadly to indicate the occurrence of the event being studied, regardless of whether it’s a positive or negative event.</p>
+<p>My “failure” variable/event of interest is <strong>contraceptive use</strong> (Yes/No). Specifically, the “failure” occurs when an individual transitions from not using contraception (0) to using contraception (1). For each time period (my 2 weeks intervals, I’ll have a binary indicator:</p>
+<p>0 = No contraception use (event hasn’t occurred yet)</p>
+<p>1 = Contraception use started (event has occurred)</p>
+<p><strong>Failure Variable</strong>:</p>
+<ul>
+<li>For starting contraception: <code>contraception_start = 1</code> (e.g., <code>contmethuse</code> transitions from 0 to 1).</li>
+</ul>
+<p><strong>Independent Variables</strong>:</p>
+<ul>
+<li><p>Predictors could include:</p>
+<ul>
+<li><p>Relationship status (<code>curromrel</code> or <code>cursexrel</code>).</p></li>
+<li><p>Relationship duration (<code>relationship_duration</code>).</p></li>
+<li><p>Other covariates you’ve included, such as age or education.</p></li>
+</ul></li>
+</ul>
+<p><strong>My hypothesis:</strong></p>
+<ul>
+<li><p>Longer relationship duration increases the likelihood of contraception use.</p></li>
+<li><p>Being in a current romantic or sexual relationship (curromrel, cursexrel) increases contraception use.</p></li>
+<li><p>Changes in relationship status (relupdate) might affect contraception use, for example: Stopping contraception may be influenced by relationship stability or transitions (e.g., relationships ending).</p></li>
+</ul>
+<p>______________________________________________________________</p>
+<ul>
+<li><p>The <code>contraception_start_w#</code> variable is <code>1</code> for the week when contraception starts/restarts and <code>0</code> otherwise.</p></li>
+<li><p>This is now a binary variable suitable for survival analysis.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="http://localhost:4630/#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (week <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>weekCount) {</span>
+<span id="cb17-2"><a href="http://localhost:4630/#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define current and previous week column names</span></span>
+<span id="cb17-3"><a href="http://localhost:4630/#cb17-3" aria-hidden="true" tabindex="-1"></a>  current_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contmethuse_w"</span>, week)</span>
+<span id="cb17-4"><a href="http://localhost:4630/#cb17-4" aria-hidden="true" tabindex="-1"></a>  previous_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contmethuse_w"</span>, week <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb17-5"><a href="http://localhost:4630/#cb17-5" aria-hidden="true" tabindex="-1"></a>  start_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contraception_start_w"</span>, week)  <span class="co"># Renamed variable</span></span>
+<span id="cb17-6"><a href="http://localhost:4630/#cb17-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-7"><a href="http://localhost:4630/#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize the new variable</span></span>
+<span id="cb17-8"><a href="http://localhost:4630/#cb17-8" aria-hidden="true" tabindex="-1"></a>  output_data[[start_col]] <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># Default to 0 (no event)</span></span>
+<span id="cb17-9"><a href="http://localhost:4630/#cb17-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-10"><a href="http://localhost:4630/#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(output_data)) {</span>
+<span id="cb17-11"><a href="http://localhost:4630/#cb17-11" aria-hidden="true" tabindex="-1"></a>    current_val <span class="ot">&lt;-</span> output_data[[current_col]][i]</span>
+<span id="cb17-12"><a href="http://localhost:4630/#cb17-12" aria-hidden="true" tabindex="-1"></a>    previous_val <span class="ot">&lt;-</span> <span class="cf">if</span> (week <span class="sc">==</span> <span class="dv">1</span>) <span class="cn">NA</span> <span class="cf">else</span> output_data[[previous_col]][i]</span>
+<span id="cb17-13"><a href="http://localhost:4630/#cb17-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-14"><a href="http://localhost:4630/#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Detect starting/restarting contraception</span></span>
+<span id="cb17-15"><a href="http://localhost:4630/#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(current_val) <span class="sc">&amp;&amp;</span> current_val <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> (<span class="fu">is.na</span>(previous_val) <span class="sc">||</span> previous_val <span class="sc">==</span> <span class="dv">0</span>)) {</span>
+<span id="cb17-16"><a href="http://localhost:4630/#cb17-16" aria-hidden="true" tabindex="-1"></a>      output_data[[start_col]][i] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># Event occurred</span></span>
+<span id="cb17-17"><a href="http://localhost:4630/#cb17-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-18"><a href="http://localhost:4630/#cb17-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-19"><a href="http://localhost:4630/#cb17-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-20"><a href="http://localhost:4630/#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="http://localhost:4630/#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the updated output_data with the new variables</span></span>
+<span id="cb17-22"><a href="http://localhost:4630/#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(output_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 151
+     id relstartyr relstartmonth   rls_baseline_duratio…¹ rls_baseline_duratio…²
+  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl+lbl&gt;                        &lt;dbl&gt;                  &lt;dbl&gt;
+1   235       2019  2 [2. Februar…                     62                  269. 
+2   287       2023 12 [12. Decemb…                      4                   17.4
+3    37       2018  6 [6. June]                        70                  304. 
+4   196       2023  3 [3. March]                       13                   56.5
+5   237       2023  6 [6. June]                        10                   43.4
+6   194       2018  3 [3. March]                       73                  317. 
+# ℹ abbreviated names: ¹​rls_baseline_duration_months,
+#   ²​rls_baseline_duration_weeks
+# ℹ 146 more variables: relupdate_w1 &lt;dbl+lbl&gt;, relupdate_w2 &lt;dbl+lbl&gt;,
+#   relupdate_w3 &lt;dbl+lbl&gt;, relupdate_w4 &lt;dbl+lbl&gt;, relupdate_w5 &lt;dbl+lbl&gt;,
+#   relupdate_w6 &lt;dbl+lbl&gt;, relupdate_w7 &lt;dbl+lbl&gt;, relupdate_w8 &lt;dbl+lbl&gt;,
+#   relupdate_w9 &lt;dbl+lbl&gt;, relupdate_w10 &lt;dbl+lbl&gt;, relupdate_w11 &lt;dbl+lbl&gt;,
+#   relupdate_w12 &lt;dbl+lbl&gt;, relupdate_w13 &lt;dbl+lbl&gt;, …</code></pre>
+</div>
+</div>
+</section>
+<section id="data-preparation-for-analysis" class="level1">
+<h1>Data Preparation for Analysis</h1>
+<p>My current dataset is in wide format. For survival analysis, apparently it is better to use a long format.</p>
+<ul>
+<li><p>Each row represents a <strong>person-week</strong> (or person-time period).</p></li>
+<li><p>Each column represents:</p>
+<ul>
+<li><p>The <strong>time period</strong> (week or biweekly interval).</p></li>
+<li><p>The <strong>event variable</strong> (e.g., <code>contraception_change</code> for starting/restarting).</p></li>
+<li><p>Time-varying covariates like <code>relationship_duration</code>, <code>curromrel</code>, <code>cursexrel</code>.</p></li>
+</ul></li>
+</ul>
+<p>Converting from wide to long data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="http://localhost:4630/#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb19-2"><a href="http://localhost:4630/#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="http://localhost:4630/#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert wide-format data to long-format and handle relationship_duration</span></span>
+<span id="cb19-4"><a href="http://localhost:4630/#cb19-4" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> output_data <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="http://localhost:4630/#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pivot all `_w#` columns into long format</span></span>
+<span id="cb19-6"><a href="http://localhost:4630/#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb19-7"><a href="http://localhost:4630/#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">matches</span>(<span class="st">"_w</span><span class="sc">\\</span><span class="st">d+$"</span>), <span class="co"># Match all columns with `_w#` suffix</span></span>
+<span id="cb19-8"><a href="http://localhost:4630/#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"week"</span>), <span class="co"># Extract variable name and week number</span></span>
+<span id="cb19-9"><a href="http://localhost:4630/#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(.*)_w(</span><span class="sc">\\</span><span class="st">d+)"</span> <span class="co"># Split column names into "variable" and "week"</span></span>
+<span id="cb19-10"><a href="http://localhost:4630/#cb19-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="http://localhost:4630/#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert week to numeric</span></span>
+<span id="cb19-12"><a href="http://localhost:4630/#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">as.numeric</span>(week)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-13"><a href="http://localhost:4630/#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select only the required columns</span></span>
+<span id="cb19-14"><a href="http://localhost:4630/#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, <span class="at">rls_baseline_duration =</span> rls_baseline_duration_weeks, week, relupdate, cursexrel, curromrel, contmethuse, relationship_duration, contraception_start) <span class="sc">%&gt;%</span></span>
+<span id="cb19-15"><a href="http://localhost:4630/#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id, week)  <span class="co"># Order data by id and week</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `relupdate_w1` and `relupdate_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `relupdate_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cursexrel_w1` and `cursexrel_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `cursexrel_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `curromrel_w1` and `curromrel_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `curromrel_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `final_outcome_w1` and `final_outcome_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `final_outcome_w1`.
+✖ Values: 1, 2, 3, 5, and 6</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `contmethuse_w1` and `contmethuse_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `contmethuse_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cmethoduse_2wk_w1` and `cmethoduse_2wk_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `cmethoduse_2wk_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="http://localhost:4630/#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the filtered long-format dataset</span></span>
+<span id="cb26-2"><a href="http://localhost:4630/#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(long_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+     id rls_baseline_duration  week relupdate cursexrel curromrel contmethuse
+  &lt;dbl&gt;                 &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt;  
+1     1                  52.1     0 NA        NA        NA        NA         
+2     1                  52.1     1  1 [Yes]  NA        NA         0 [No]    
+3     1                  52.1     2  1 [Yes]  NA        NA         0 [No]    
+4     1                  52.1     3  1 [Yes]  NA        NA         0 [No]    
+5     1                  52.1     4  1 [Yes]  NA        NA         0 [No]    
+6     1                  52.1     5  1 [Yes]  NA        NA         0 [No]    
+# ℹ 2 more variables: relationship_duration &lt;dbl&gt;, contraception_start &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="http://localhost:4630/#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check relationship duration for a few participants</span></span>
+<span id="cb28-2"><a href="http://localhost:4630/#cb28-2" aria-hidden="true" tabindex="-1"></a>long_sample <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="http://localhost:4630/#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">264</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Replace with specific ids</span></span>
+<span id="cb28-4"><a href="http://localhost:4630/#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, week, relationship_duration)</span>
+<span id="cb28-5"><a href="http://localhost:4630/#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="http://localhost:4630/#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(long_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 34 × 3
+      id  week relationship_duration
+   &lt;dbl&gt; &lt;dbl&gt;                 &lt;dbl&gt;
+ 1    15     0                  361.
+ 2    15     1                  363.
+ 3    15     2                  365.
+ 4    15     3                  367.
+ 5    15     4                  369.
+ 6    15     5                  371.
+ 7    15     6                  373.
+ 8    15     7                    0 
+ 9    15     8                   NA 
+10    15     9                   NA 
+# ℹ 24 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="http://localhost:4630/#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the structure of the data</span></span>
+<span id="cb30-2"><a href="http://localhost:4630/#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(long_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [4,675 × 9] (S3: tbl_df/tbl/data.frame)
+ $ id                   : num [1:4675] 1 1 1 1 1 1 1 1 1 1 ...
+  ..- attr(*, "format.stata")= chr "%8.0g"
+ $ rls_baseline_duration: num [1:4675] 52.1 52.1 52.1 52.1 52.1 ...
+  ..- attr(*, "label")= chr "What year did you ${relstart_string}${rel_init}?"
+  ..- attr(*, "format.stata")= chr "%8.0g"
+ $ week                 : num [1:4675] 0 1 2 3 4 5 6 7 8 9 ...
+ $ relupdate            : dbl+lbl [1:4675] NA,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  ...
+   ..@ labels: Named num [1:5] -9 -8 -6 0 1
+   .. ..- attr(*, "names")= chr [1:5] "REFUSED" "DON'T KNOW" "HUNG UP" "No" ...
+   ..@ label : chr "Last time we spoke you were in a relationship with ${rel_init_old}. Are you sti"
+ $ cursexrel            : dbl+lbl [1:4675] NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+   ..@ labels: Named num [1:5] -9 -8 -6 0 1
+   .. ..- attr(*, "names")= chr [1:5] "REFUSED" "DON'T KNOW" "HUNG UP" "No" ...
+   ..@ label : chr "Are you currently in any type of relationship that involves physical or emotiona"
+ $ curromrel            : dbl+lbl [1:4675] NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N...
+   ..@ labels: Named num [1:5] -9 -8 -6 0 1
+   .. ..- attr(*, "names")= chr [1:5] "REFUSED" "DON'T KNOW" "HUNG UP" "No" ...
+   ..@ label : chr "Are you currently in a special romantic relationship with anyone?"
+ $ contmethuse          : dbl+lbl [1:4675] NA,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  ...
+   ..@ labels: Named num [1:5] -9 -8 -6 0 1
+   .. ..- attr(*, "names")= chr [1:5] "REFUSED" "DON'T KNOW" "HUNG UP" "No" ...
+   ..@ label : chr "Are you or your partner currently doing something or using any method to delay o"
+ $ relationship_duration: num [1:4675] 52.1 54.1 56.1 58.1 60.1 ...
+ $ contraception_start  : num [1:4675] NA 0 0 0 0 0 0 0 0 0 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="http://localhost:4630/#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values</span></span>
+<span id="cb32-2"><a href="http://localhost:4630/#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(long_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   id rls_baseline_duration                  week 
+                    0                     0                     0 
+            relupdate             cursexrel             curromrel 
+                 1453                  4361                  4307 
+          contmethuse relationship_duration   contraception_start 
+                 2584                   836                   275 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="http://localhost:4630/#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(long_data<span class="sc">$</span>contraception_start)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0    1 
+4239  161 </code></pre>
+</div>
+</div>
+</section>
+<section id="b-determining-risk-window" class="level1">
+<h1>B) Determining Risk Window</h1>
+<p>For survival analysis, the risk window is the period where a participant is “at risk” for the event of interest: starting/restarting contraception.</p>
+<ul>
+<li><p><strong>Right Truncation</strong>:</p>
+<ul>
+<li><p>Right truncation occurs when participants are observed only after a certain point in time, meaning they are included in the study only if they have already experienced certain characteristics (e.g., relationship initiation).</p></li>
+<li><p>Cases where contraception use doesn’t start by the end of the study period will be naturally right-censored.</p></li>
+</ul></li>
+<li><p><strong>Left-Censoring</strong>:</p>
+<ul>
+<li><p>Left-censoring occurs when the event of interest has already occured before the study begins or before data collection starts.</p></li>
+<li><p>By including baseline relationship duration in my data, it accounts for relationships that started before the study began.</p></li>
+<li><p>Given my data, my risk window is likely defined by individuals who were already using contraception when the study began</p></li>
+<li><p>Therefore, participants who had already started using contraception before their inclusion in the study would be left-censored for the “contraception start” analysis.</p></li>
+</ul></li>
+</ul>
+<section id="defining-the-risk-window" class="level3">
+<h3 class="anchored" data-anchor-id="defining-the-risk-window">Defining the Risk Window<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#defining-the-risk-window" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<p>For participants to be included in the model:</p>
+<ul>
+<li><strong>Starting Contraception</strong>: Filter participants who were at risk (i.e., not using contraception at the start of the study). Ensure only those eligible for failure are included.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="http://localhost:4630/#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for starting contraception</span></span>
+<span id="cb36-2"><a href="http://localhost:4630/#cb36-2" aria-hidden="true" tabindex="-1"></a>start_data <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="http://localhost:4630/#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(contmethuse <span class="sc">==</span> <span class="dv">0</span>)  <span class="co"># Include only participants not using contraception</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Ensure Binary Events Variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="http://localhost:4630/#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm that contraception_start is binary</span></span>
+<span id="cb37-2"><a href="http://localhost:4630/#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(long_data<span class="sc">$</span>contraception_start)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0    1 
+4239  161 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="http://localhost:4630/#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#How many participants experienced the event (contraception_start == 1)?</span></span>
+<span id="cb39-2"><a href="http://localhost:4630/#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(start_data<span class="sc">$</span>contraception_start)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0 
+1924 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="discrete-time-logistic-regression" class="level1">
+<h1>Discrete-Time Logistic Regression</h1>
+<p><strong>Model 1: Starting Contraception</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="http://localhost:4630/#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb41-2"><a href="http://localhost:4630/#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="http://localhost:4630/#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the logistic regression model</span></span>
+<span id="cb41-4"><a href="http://localhost:4630/#cb41-4" aria-hidden="true" tabindex="-1"></a>start_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb41-5"><a href="http://localhost:4630/#cb41-5" aria-hidden="true" tabindex="-1"></a>  contraception_start <span class="sc">~</span> relationship_duration <span class="sc">+</span> curromrel <span class="sc">+</span> cursexrel,</span>
+<span id="cb41-6"><a href="http://localhost:4630/#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> binomial,</span>
+<span id="cb41-7"><a href="http://localhost:4630/#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> start_data</span>
+<span id="cb41-8"><a href="http://localhost:4630/#cb41-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-9"><a href="http://localhost:4630/#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="http://localhost:4630/#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize results</span></span>
+<span id="cb41-11"><a href="http://localhost:4630/#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(start_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = contraception_start ~ relationship_duration + curromrel + 
+    cursexrel, family = binomial, data = start_data)
+
+Coefficients: (1 not defined because of singularities)
+                        Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)           -2.657e+01  5.924e+04       0        1
+relationship_duration -8.630e-18  1.317e+03       0        1
+curromrel                     NA         NA      NA       NA
+cursexrel              1.968e-14  2.587e+05       0        1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 0.0000e+00  on 46  degrees of freedom
+Residual deviance: 2.7267e-10  on 44  degrees of freedom
+  (1877 observations deleted due to missingness)
+AIC: 6
+
+Number of Fisher Scoring iterations: 25</code></pre>
+</div>
+</div>
+<p><strong>Check Model Fit:</strong></p>
+<p>Evaluate the model using metrics like AIC or deviance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="http://localhost:4630/#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare null deviance and residual deviance</span></span>
+<span id="cb43-2"><a href="http://localhost:4630/#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(start_model, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: contraception_start
+
+Terms added sequentially (first to last)
+
+                      Df Deviance Resid. Df Resid. Dev Pr(&gt;Chi)
+NULL                                     46 0.0000e+00         
+relationship_duration  1        0        45 2.7267e-10        1
+curromrel              0        0        45 2.7267e-10         
+cursexrel              1        0        44 2.7267e-10        1</code></pre>
+</div>
+</div>
+</section>
+<section id="c-explain-whether-the-results-were-consistent-with-your-expectations-and-do-that-by-interpreting-the-coefficients-from-the-models-model-fit-and-so-on." class="level1">
+<h1>C) Explain whether the results were consistent with your expectations, and do that by interpreting the coefficients from the models, model fit, and so on.</h1>
+<p>The current model indicates that my dataset has too few events or too much multicollinearity to yield meaningful results.</p>
+<p>I’m going rerun the model again, with a different approach. The revised code based on the clarified definitions for my event variables. It accounts for:</p>
+<ul>
+<li><p><strong>Restarts</strong>: Tracks any transitions from <code>0</code> to <code>1</code> in <code>contmethuse</code> (indicates restarting contraception).</p></li>
+<li><p><strong>Stopping Contraception</strong>: Tracks transitions from <code>1</code> to <code>0</code> in <code>contmethuse</code> (indicates stopping contraception).</p></li>
+<li><p><strong>Switching Methods</strong>: Transition from 1 to 0 in <code>cmethoduse_2wk</code> (1: Participant did not switch methods; 0: Participant did switch methods.)</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="http://localhost:4630/#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (week <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>weekCount) {</span>
+<span id="cb45-2"><a href="http://localhost:4630/#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define current and previous week column names</span></span>
+<span id="cb45-3"><a href="http://localhost:4630/#cb45-3" aria-hidden="true" tabindex="-1"></a>  contmethuse_current <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contmethuse_w"</span>, week)</span>
+<span id="cb45-4"><a href="http://localhost:4630/#cb45-4" aria-hidden="true" tabindex="-1"></a>  contmethuse_previous <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contmethuse_w"</span>, week <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb45-5"><a href="http://localhost:4630/#cb45-5" aria-hidden="true" tabindex="-1"></a>  cmethoduse_current <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"cmethoduse_2wk_w"</span>, week)</span>
+<span id="cb45-6"><a href="http://localhost:4630/#cb45-6" aria-hidden="true" tabindex="-1"></a>  cmethoduse_previous <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"cmethoduse_2wk_w"</span>, week <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb45-7"><a href="http://localhost:4630/#cb45-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-8"><a href="http://localhost:4630/#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define new event columns</span></span>
+<span id="cb45-9"><a href="http://localhost:4630/#cb45-9" aria-hidden="true" tabindex="-1"></a>  restart_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contraception_restart_w"</span>, week)</span>
+<span id="cb45-10"><a href="http://localhost:4630/#cb45-10" aria-hidden="true" tabindex="-1"></a>  stop_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contraception_stop_w"</span>, week)</span>
+<span id="cb45-11"><a href="http://localhost:4630/#cb45-11" aria-hidden="true" tabindex="-1"></a>  switch_col <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"contraception_switch_w"</span>, week)</span>
+<span id="cb45-12"><a href="http://localhost:4630/#cb45-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-13"><a href="http://localhost:4630/#cb45-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize new variables</span></span>
+<span id="cb45-14"><a href="http://localhost:4630/#cb45-14" aria-hidden="true" tabindex="-1"></a>  output_data[[restart_col]] <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># Default to 0 (no restart event)</span></span>
+<span id="cb45-15"><a href="http://localhost:4630/#cb45-15" aria-hidden="true" tabindex="-1"></a>  output_data[[stop_col]] <span class="ot">&lt;-</span> <span class="dv">0</span>     <span class="co"># Default to 0 (no stop event)</span></span>
+<span id="cb45-16"><a href="http://localhost:4630/#cb45-16" aria-hidden="true" tabindex="-1"></a>  output_data[[switch_col]] <span class="ot">&lt;-</span> <span class="cn">NA</span>  <span class="co"># NA by default (only 1 or 0 for valid rows)</span></span>
+<span id="cb45-17"><a href="http://localhost:4630/#cb45-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-18"><a href="http://localhost:4630/#cb45-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(output_data)) {</span>
+<span id="cb45-19"><a href="http://localhost:4630/#cb45-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Current and previous values for contraception use</span></span>
+<span id="cb45-20"><a href="http://localhost:4630/#cb45-20" aria-hidden="true" tabindex="-1"></a>    current_contmethuse <span class="ot">&lt;-</span> output_data[[contmethuse_current]][i]</span>
+<span id="cb45-21"><a href="http://localhost:4630/#cb45-21" aria-hidden="true" tabindex="-1"></a>    previous_contmethuse <span class="ot">&lt;-</span> <span class="cf">if</span> (week <span class="sc">==</span> <span class="dv">1</span>) <span class="cn">NA</span> <span class="cf">else</span> output_data[[contmethuse_previous]][i]</span>
+<span id="cb45-22"><a href="http://localhost:4630/#cb45-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-23"><a href="http://localhost:4630/#cb45-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Current and previous values for method use status</span></span>
+<span id="cb45-24"><a href="http://localhost:4630/#cb45-24" aria-hidden="true" tabindex="-1"></a>    current_cmethoduse <span class="ot">&lt;-</span> output_data[[cmethoduse_current]][i]</span>
+<span id="cb45-25"><a href="http://localhost:4630/#cb45-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-26"><a href="http://localhost:4630/#cb45-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Detect restarting contraception (0 to 1 in contmethuse)</span></span>
+<span id="cb45-27"><a href="http://localhost:4630/#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(current_contmethuse) <span class="sc">&amp;&amp;</span> current_contmethuse <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> (<span class="fu">is.na</span>(previous_contmethuse) <span class="sc">||</span> previous_contmethuse <span class="sc">==</span> <span class="dv">0</span>)) {</span>
+<span id="cb45-28"><a href="http://localhost:4630/#cb45-28" aria-hidden="true" tabindex="-1"></a>      output_data[[restart_col]][i] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># Restart event occurred</span></span>
+<span id="cb45-29"><a href="http://localhost:4630/#cb45-29" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-30"><a href="http://localhost:4630/#cb45-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-31"><a href="http://localhost:4630/#cb45-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Detect stopping contraception (1 to 0 in contmethuse)</span></span>
+<span id="cb45-32"><a href="http://localhost:4630/#cb45-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(current_contmethuse) <span class="sc">&amp;&amp;</span> current_contmethuse <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(previous_contmethuse) <span class="sc">&amp;&amp;</span> previous_contmethuse <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb45-33"><a href="http://localhost:4630/#cb45-33" aria-hidden="true" tabindex="-1"></a>      output_data[[stop_col]][i] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># Stop event occurred</span></span>
+<span id="cb45-34"><a href="http://localhost:4630/#cb45-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-35"><a href="http://localhost:4630/#cb45-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb45-36"><a href="http://localhost:4630/#cb45-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Detect switching methods (1 to 0 in cmethoduse_2wk)</span></span>
+<span id="cb45-37"><a href="http://localhost:4630/#cb45-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.na</span>(current_cmethoduse)) {</span>
+<span id="cb45-38"><a href="http://localhost:4630/#cb45-38" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (current_cmethoduse <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb45-39"><a href="http://localhost:4630/#cb45-39" aria-hidden="true" tabindex="-1"></a>        output_data[[switch_col]][i] <span class="ot">&lt;-</span> <span class="dv">0</span>  <span class="co"># Did not switch methods</span></span>
+<span id="cb45-40"><a href="http://localhost:4630/#cb45-40" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> <span class="cf">if</span> (current_cmethoduse <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb45-41"><a href="http://localhost:4630/#cb45-41" aria-hidden="true" tabindex="-1"></a>        output_data[[switch_col]][i] <span class="ot">&lt;-</span> <span class="dv">1</span>  <span class="co"># Switched methods</span></span>
+<span id="cb45-42"><a href="http://localhost:4630/#cb45-42" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb45-43"><a href="http://localhost:4630/#cb45-43" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb45-44"><a href="http://localhost:4630/#cb45-44" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb45-45"><a href="http://localhost:4630/#cb45-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-46"><a href="http://localhost:4630/#cb45-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-47"><a href="http://localhost:4630/#cb45-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the updated output_data with the new variables</span></span>
+<span id="cb45-48"><a href="http://localhost:4630/#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(output_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 199
+     id relstartyr relstartmonth   rls_baseline_duratio…¹ rls_baseline_duratio…²
+  &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl+lbl&gt;                        &lt;dbl&gt;                  &lt;dbl&gt;
+1   235       2019  2 [2. Februar…                     62                  269. 
+2   287       2023 12 [12. Decemb…                      4                   17.4
+3    37       2018  6 [6. June]                        70                  304. 
+4   196       2023  3 [3. March]                       13                   56.5
+5   237       2023  6 [6. June]                        10                   43.4
+6   194       2018  3 [3. March]                       73                  317. 
+# ℹ abbreviated names: ¹​rls_baseline_duration_months,
+#   ²​rls_baseline_duration_weeks
+# ℹ 194 more variables: relupdate_w1 &lt;dbl+lbl&gt;, relupdate_w2 &lt;dbl+lbl&gt;,
+#   relupdate_w3 &lt;dbl+lbl&gt;, relupdate_w4 &lt;dbl+lbl&gt;, relupdate_w5 &lt;dbl+lbl&gt;,
+#   relupdate_w6 &lt;dbl+lbl&gt;, relupdate_w7 &lt;dbl+lbl&gt;, relupdate_w8 &lt;dbl+lbl&gt;,
+#   relupdate_w9 &lt;dbl+lbl&gt;, relupdate_w10 &lt;dbl+lbl&gt;, relupdate_w11 &lt;dbl+lbl&gt;,
+#   relupdate_w12 &lt;dbl+lbl&gt;, relupdate_w13 &lt;dbl+lbl&gt;, …</code></pre>
+</div>
+</div>
+<p>Switch Wide to Long Data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="http://localhost:4630/#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert wide-format data to long-format and handle specified variables</span></span>
+<span id="cb47-2"><a href="http://localhost:4630/#cb47-2" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> output_data <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="http://localhost:4630/#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pivot all `_w#` columns into long format</span></span>
+<span id="cb47-4"><a href="http://localhost:4630/#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb47-5"><a href="http://localhost:4630/#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">matches</span>(<span class="st">"_w</span><span class="sc">\\</span><span class="st">d+$"</span>), <span class="co"># Match all columns with `_w#` suffix</span></span>
+<span id="cb47-6"><a href="http://localhost:4630/#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">".value"</span>, <span class="st">"week"</span>), <span class="co"># Extract variable name and week number</span></span>
+<span id="cb47-7"><a href="http://localhost:4630/#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"(.*)_w(</span><span class="sc">\\</span><span class="st">d+)"</span> <span class="co"># Split column names into "variable" and "week"</span></span>
+<span id="cb47-8"><a href="http://localhost:4630/#cb47-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb47-9"><a href="http://localhost:4630/#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convert week to numeric</span></span>
+<span id="cb47-10"><a href="http://localhost:4630/#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">as.numeric</span>(week)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-11"><a href="http://localhost:4630/#cb47-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Select only the requested columns</span></span>
+<span id="cb47-12"><a href="http://localhost:4630/#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb47-13"><a href="http://localhost:4630/#cb47-13" aria-hidden="true" tabindex="-1"></a>    id,</span>
+<span id="cb47-14"><a href="http://localhost:4630/#cb47-14" aria-hidden="true" tabindex="-1"></a>    week,</span>
+<span id="cb47-15"><a href="http://localhost:4630/#cb47-15" aria-hidden="true" tabindex="-1"></a>    cmethoduse_2wk,</span>
+<span id="cb47-16"><a href="http://localhost:4630/#cb47-16" aria-hidden="true" tabindex="-1"></a>    relupdate,</span>
+<span id="cb47-17"><a href="http://localhost:4630/#cb47-17" aria-hidden="true" tabindex="-1"></a>    cursexrel,</span>
+<span id="cb47-18"><a href="http://localhost:4630/#cb47-18" aria-hidden="true" tabindex="-1"></a>    curromrel,</span>
+<span id="cb47-19"><a href="http://localhost:4630/#cb47-19" aria-hidden="true" tabindex="-1"></a>    contmethuse,</span>
+<span id="cb47-20"><a href="http://localhost:4630/#cb47-20" aria-hidden="true" tabindex="-1"></a>    relationship_duration,</span>
+<span id="cb47-21"><a href="http://localhost:4630/#cb47-21" aria-hidden="true" tabindex="-1"></a>    contraception_restart,</span>
+<span id="cb47-22"><a href="http://localhost:4630/#cb47-22" aria-hidden="true" tabindex="-1"></a>    contraception_stop,</span>
+<span id="cb47-23"><a href="http://localhost:4630/#cb47-23" aria-hidden="true" tabindex="-1"></a>    contraception_switch</span>
+<span id="cb47-24"><a href="http://localhost:4630/#cb47-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb47-25"><a href="http://localhost:4630/#cb47-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(id, week)  <span class="co"># Order data by id and week</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `relupdate_w1` and `relupdate_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `relupdate_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cursexrel_w1` and `cursexrel_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `cursexrel_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `curromrel_w1` and `curromrel_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `curromrel_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `final_outcome_w1` and `final_outcome_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `final_outcome_w1`.
+✖ Values: 1, 2, 3, 5, and 6</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `contmethuse_w1` and `contmethuse_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `contmethuse_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `cmethoduse_2wk_w1` and `cmethoduse_2wk_w12` have conflicting value labels.
+ℹ Labels for these values will be taken from `cmethoduse_2wk_w1`.
+✖ Values: -9, -8, -6, 0, and 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="http://localhost:4630/#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the filtered long-format dataset</span></span>
+<span id="cb54-2"><a href="http://localhost:4630/#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(long_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+     id  week cmethoduse_2wk relupdate cursexrel curromrel contmethuse
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+lbl&gt;      &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt; &lt;dbl+lbl&gt;  
+1     1     0 NA             NA        NA        NA        NA         
+2     1     1 NA              1 [Yes]  NA        NA         0 [No]    
+3     1     2 NA              1 [Yes]  NA        NA         0 [No]    
+4     1     3 NA              1 [Yes]  NA        NA         0 [No]    
+5     1     4 NA              1 [Yes]  NA        NA         0 [No]    
+6     1     5 NA              1 [Yes]  NA        NA         0 [No]    
+# ℹ 4 more variables: relationship_duration &lt;dbl&gt;, contraception_restart &lt;dbl&gt;,
+#   contraception_stop &lt;dbl&gt;, contraception_switch &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="http://localhost:4630/#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(long_data<span class="sc">$</span>contraception_restart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0    1 
+4239  161 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="http://localhost:4630/#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(long_data<span class="sc">$</span>contraception_stop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0    1 
+4325   75 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="http://localhost:4630/#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(long_data<span class="sc">$</span>contraception_switch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0    1 
+1297   58 </code></pre>
+</div>
+</div>
+<p><strong>Inspecting the distribution:</strong> Check how these events are distributed across participants and time periods to ensure meaningful patterns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="http://localhost:4630/#cb62-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="http://localhost:4630/#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="http://localhost:4630/#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb62-4"><a href="http://localhost:4630/#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">restarts =</span> <span class="fu">sum</span>(contraception_restart, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb62-5"><a href="http://localhost:4630/#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">stops =</span> <span class="fu">sum</span>(contraception_stop, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb62-6"><a href="http://localhost:4630/#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">switches =</span> <span class="fu">sum</span>(contraception_switch, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-7"><a href="http://localhost:4630/#cb62-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb62-8"><a href="http://localhost:4630/#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(restarts), <span class="fu">desc</span>(stops), <span class="fu">desc</span>(switches))  <span class="co"># Arrange by multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 275 × 4
+      id restarts stops switches
+   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1    59        3     1        2
+ 2   270        3     0        3
+ 3    64        2     1        1
+ 4   175        2     1        1
+ 5    56        2     1        0
+ 6    95        2     1        0
+ 7   148        2     1        0
+ 8   255        2     1        0
+ 9    69        2     0        2
+10   100        2     0        2
+# ℹ 265 more rows</code></pre>
+</div>
+</div>
+<p><strong>Checking Event Timing:</strong> Verify whether these events occur early or late in the study to evaluate censoring effects</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="http://localhost:4630/#cb64-1" aria-hidden="true" tabindex="-1"></a>long_data <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="http://localhost:4630/#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(contraception_restart <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> contraception_stop <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> contraception_switch <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="http://localhost:4630/#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(week) <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="http://localhost:4630/#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb64-5"><a href="http://localhost:4630/#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">restarts =</span> <span class="fu">sum</span>(contraception_restart, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb64-6"><a href="http://localhost:4630/#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">stops =</span> <span class="fu">sum</span>(contraception_stop, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb64-7"><a href="http://localhost:4630/#cb64-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">switches =</span> <span class="fu">sum</span>(contraception_switch, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-8"><a href="http://localhost:4630/#cb64-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 4
+    week restarts stops switches
+   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1     1      105     0       12
+ 2     2        5    74        5
+ 3     3        7     0        3
+ 4     4        1     0        1
+ 5     5        4     0        3
+ 6     6        6     1        1
+ 7     7        5     0        4
+ 8     8        6     0        1
+ 9     9        2     0        2
+10    10        1     0        5
+11    11        4     0        3
+12    12        6     0        5
+13    13        3     0        3
+14    14        2     0        2
+15    15        2     0        4
+16    16        2     0        4</code></pre>
+</div>
+</div>
+</section>
+<section id="discrete-time-logistic-regression-trial-2" class="level1">
+<h1>Discrete-Time Logistic Regression Trial 2</h1>
+<section id="model-1-contraception-restart" class="level2">
+<h2 class="anchored" data-anchor-id="model-1-contraception-restart"><strong>Model 1: Contraception Restart</strong><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#model-1-contraception-restart" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="http://localhost:4630/#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for restart analysis</span></span>
+<span id="cb66-2"><a href="http://localhost:4630/#cb66-2" aria-hidden="true" tabindex="-1"></a>restart_data <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span></span>
+<span id="cb66-3"><a href="http://localhost:4630/#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(contraception_restart))  <span class="co"># Exclude rows with missing restart info</span></span>
+<span id="cb66-4"><a href="http://localhost:4630/#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="http://localhost:4630/#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the logistic regression model for restart</span></span>
+<span id="cb66-6"><a href="http://localhost:4630/#cb66-6" aria-hidden="true" tabindex="-1"></a>restart_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb66-7"><a href="http://localhost:4630/#cb66-7" aria-hidden="true" tabindex="-1"></a>  contraception_restart <span class="sc">~</span> relationship_duration <span class="sc">+</span> curromrel <span class="sc">+</span> cursexrel,</span>
+<span id="cb66-8"><a href="http://localhost:4630/#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> binomial,</span>
+<span id="cb66-9"><a href="http://localhost:4630/#cb66-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> restart_data</span>
+<span id="cb66-10"><a href="http://localhost:4630/#cb66-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb66-11"><a href="http://localhost:4630/#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-12"><a href="http://localhost:4630/#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize the model results</span></span>
+<span id="cb66-13"><a href="http://localhost:4630/#cb66-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restart_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = contraception_restart ~ relationship_duration + 
+    curromrel + cursexrel, family = binomial, data = restart_data)
+
+Coefficients: (1 not defined because of singularities)
+                        Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)           -3.301e+00  6.805e-01  -4.851 1.23e-06 ***
+relationship_duration  1.279e-02  6.434e-03   1.988   0.0468 *  
+curromrel                     NA         NA      NA       NA    
+cursexrel             -1.427e+01  2.284e+03  -0.006   0.9950    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 30.546  on 68  degrees of freedom
+Residual deviance: 26.504  on 66  degrees of freedom
+  (4331 observations deleted due to missingness)
+AIC: 32.504
+
+Number of Fisher Scoring iterations: 16</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="http://localhost:4630/#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(restart_model, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model: binomial, link: logit
+
+Response: contraception_restart
+
+Terms added sequentially (first to last)
+
+                      Df Deviance Resid. Df Resid. Dev Pr(&gt;Chi)  
+NULL                                     68     30.546           
+relationship_duration  1   3.8285        67     26.718  0.05039 .
+curromrel              0   0.0000        67     26.718           
+cursexrel              1   0.2139        66     26.504  0.64376  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="model-2-contraception-stop" class="level2">
+<h2 class="anchored" data-anchor-id="model-2-contraception-stop"><strong>Model 2: Contraception Stop</strong><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#model-2-contraception-stop" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="http://localhost:4630/#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for stop analysis</span></span>
+<span id="cb70-2"><a href="http://localhost:4630/#cb70-2" aria-hidden="true" tabindex="-1"></a>stop_data <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="http://localhost:4630/#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(contraception_stop))  <span class="co"># Exclude rows with missing stop info</span></span>
+<span id="cb70-4"><a href="http://localhost:4630/#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="http://localhost:4630/#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the logistic regression model for stop</span></span>
+<span id="cb70-6"><a href="http://localhost:4630/#cb70-6" aria-hidden="true" tabindex="-1"></a>stop_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb70-7"><a href="http://localhost:4630/#cb70-7" aria-hidden="true" tabindex="-1"></a>  contraception_stop <span class="sc">~</span> relationship_duration <span class="sc">+</span> curromrel <span class="sc">+</span> cursexrel,</span>
+<span id="cb70-8"><a href="http://localhost:4630/#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> binomial,</span>
+<span id="cb70-9"><a href="http://localhost:4630/#cb70-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> stop_data</span>
+<span id="cb70-10"><a href="http://localhost:4630/#cb70-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-11"><a href="http://localhost:4630/#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-12"><a href="http://localhost:4630/#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize the model results</span></span>
+<span id="cb70-13"><a href="http://localhost:4630/#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(stop_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = contraception_stop ~ relationship_duration + curromrel + 
+    cursexrel, family = binomial, data = stop_data)
+
+Coefficients: (1 not defined because of singularities)
+                        Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)           -2.657e+01  4.821e+04  -0.001        1
+relationship_duration -4.662e-17  8.462e+02   0.000        1
+curromrel                     NA         NA      NA       NA
+cursexrel             -5.673e-15  2.111e+05   0.000        1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 0.0000e+00  on 68  degrees of freedom
+Residual deviance: 4.0031e-10  on 66  degrees of freedom
+  (4331 observations deleted due to missingness)
+AIC: 6
+
+Number of Fisher Scoring iterations: 25</code></pre>
+</div>
+</div>
+</section>
+<section id="model-3-switching-contraception-methods" class="level2">
+<h2 class="anchored" data-anchor-id="model-3-switching-contraception-methods"><strong>Model 3: Switching Contraception Methods</strong><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#model-3-switching-contraception-methods" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="http://localhost:4630/#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for switch analysis</span></span>
+<span id="cb72-2"><a href="http://localhost:4630/#cb72-2" aria-hidden="true" tabindex="-1"></a>switch_data <span class="ot">&lt;-</span> long_data <span class="sc">%&gt;%</span></span>
+<span id="cb72-3"><a href="http://localhost:4630/#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(contraception_switch))  <span class="co"># Exclude rows with missing switch info</span></span>
+<span id="cb72-4"><a href="http://localhost:4630/#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="http://localhost:4630/#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the logistic regression model for switching methods</span></span>
+<span id="cb72-6"><a href="http://localhost:4630/#cb72-6" aria-hidden="true" tabindex="-1"></a>switch_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
+<span id="cb72-7"><a href="http://localhost:4630/#cb72-7" aria-hidden="true" tabindex="-1"></a>  contraception_switch <span class="sc">~</span> relationship_duration <span class="sc">+</span> curromrel <span class="sc">+</span> cursexrel,</span>
+<span id="cb72-8"><a href="http://localhost:4630/#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> binomial,</span>
+<span id="cb72-9"><a href="http://localhost:4630/#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> switch_data</span>
+<span id="cb72-10"><a href="http://localhost:4630/#cb72-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb72-11"><a href="http://localhost:4630/#cb72-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-12"><a href="http://localhost:4630/#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize the model results</span></span>
+<span id="cb72-13"><a href="http://localhost:4630/#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(switch_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = contraception_switch ~ relationship_duration + 
+    curromrel + cursexrel, family = binomial, data = switch_data)
+
+Coefficients: (1 not defined because of singularities)
+                        Estimate Std. Error z value Pr(&gt;|z|)  
+(Intercept)              -2.3026     1.0488  -2.195   0.0281 *
+relationship_duration    -0.1833    74.4382  -0.002   0.9980  
+curromrel                     NA         NA      NA       NA  
+cursexrel               -16.8969 10755.0435  -0.002   0.9987  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 7.2049  on 13  degrees of freedom
+Residual deviance: 6.7020  on 11  degrees of freedom
+  (1341 observations deleted due to missingness)
+AIC: 12.702
+
+Number of Fisher Scoring iterations: 18</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="final-results" class="level1">
+<h1>Final Results</h1>
+<section id="restarting-contraception" class="level3">
+<h3 class="anchored" data-anchor-id="restarting-contraception"><strong>1. Restarting Contraception</strong><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#restarting-contraception" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<p><strong>Coefficients:</strong></p>
+<ol type="1">
+<li><p><strong>Intercept (<code>-3.301</code>)</strong>:</p>
+<ul>
+<li><p>The baseline log-odds of restarting contraception when all predictors are at their reference level.</p></li>
+<li><p>A significant negative coefficient (p &lt; 0.001) suggests a low baseline probability of restarting contraception.</p></li>
+</ul></li>
+<li><p><strong>Relationship Duration (<code>0.01279</code>)</strong>:</p>
+<ul>
+<li><p>A positive coefficient (p = 0.0468) indicates that longer relationship durations slightly increase the odds of restarting contraception.</p></li>
+<li><p>Odds Ratio = exp(0.01279)≈1.013: Each additional unit (e.g., two weeks) of relationship duration increases the odds of restarting contraception by 1.3%.</p></li>
+</ul></li>
+<li><p><strong>curromrel</strong>:</p>
+<ul>
+<li>Excluded from the model due to multicollinearity (likely perfectly correlated with another variable or constant within the dataset).</li>
+</ul></li>
+<li><p><strong>cursexrel (<code>-14.27</code>)</strong>:</p>
+<ul>
+<li>Very large negative coefficient with a high standard error and an insignificant p-value (p = 0.9950), suggesting no meaningful relationship between being in a sexual relationship and restarting contraception.</li>
+</ul></li>
+</ol>
+<p><strong>Model Fit:</strong></p>
+<ul>
+<li><p><strong>Null deviance</strong> (30.546) vs.&nbsp;<strong>Residual deviance</strong> (26.504): Modest improvement in fit, indicating predictors explain some variation.</p></li>
+<li><p><strong>AIC (32.504)</strong>: Indicates the overall model fit but is not interpretable in isolation.</p></li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li><p>Relationship duration is the only significant predictor of restarting contraception.</p></li>
+<li><p>Being in a sexual relationship (cursexrel) does not significantly influence restarting contraception, and the model is limited by excluded variables and potential collinearity.</p></li>
+</ul>
+</section>
+<section id="stopping-contraception" class="level3">
+<h3 class="anchored" data-anchor-id="stopping-contraception"><strong>2. Stopping Contraception</strong><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#stopping-contraception" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<p><strong>Coefficients:</strong></p>
+<ol type="1">
+<li><p><strong>Intercept (<code>-26.57</code>)</strong>:</p>
+<ul>
+<li>Extremely large negative coefficient with an insignificant p-value (p = 1), suggesting no meaningful baseline odds.</li>
+</ul></li>
+<li><p><strong>Relationship Duration (<code>-4.66e-17</code>)</strong>:</p>
+<ul>
+<li>Essentially zero with an insignificant p-value (p = 1), indicating no effect of relationship duration on stopping contraception.</li>
+</ul></li>
+<li><p><strong>curromrel</strong>:</p>
+<ul>
+<li>Excluded due to multicollinearity.</li>
+</ul></li>
+<li><p><strong>cursexrel (<code>-5.67e-15</code>)</strong>:</p>
+<ul>
+<li>Essentially zero with an insignificant p-value (p = 1), suggesting no relationship between being in a sexual relationship and stopping contraception.</li>
+</ul></li>
+</ol>
+<p><strong>Model Fit:</strong></p>
+<ul>
+<li><p><strong>Null deviance</strong> (0) vs.&nbsp;<strong>Residual deviance</strong> (~0): The model does not explain any variation in the data.</p></li>
+<li><p><strong>AIC (6)</strong>: Very low, but this is likely due to the lack of meaningful variation in the outcome.</p></li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li><p>None of the predictors significantly explain stopping contraception.</p></li>
+<li><p>The lack of variability in the dependent variable or multicollinearity issues may be impacting the model.</p></li>
+</ul>
+</section>
+<section id="switching-contraceptive-methods" class="level3">
+<h3 class="anchored" data-anchor-id="switching-contraceptive-methods"><strong>3. Switching Contraceptive Methods</strong><a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="" href="http://localhost:4630/#switching-contraceptive-methods" style="font: 1em / 1 anchorjs-icons; margin-left: 0.1875em; padding-right: 0.1875em; padding-left: 0.1875em;"></a></h3>
+<p><strong>Coefficients:</strong></p>
+<ol type="1">
+<li><p><strong>Intercept (<code>-2.3026</code>)</strong>:</p>
+<ul>
+<li>Significant negative coefficient (p = 0.0281) indicates a low baseline log-odds of switching contraception methods.</li>
+</ul></li>
+<li><p><strong>Relationship Duration (<code>-0.1833</code>)</strong>:</p>
+<ul>
+<li>A negative coefficient with an insignificant p-value (p = 0.9980), suggesting no meaningful effect of relationship duration on switching methods.</li>
+</ul></li>
+<li><p><strong>curromrel</strong>:</p>
+<ul>
+<li>Excluded due to multicollinearity.</li>
+</ul></li>
+<li><p><strong>cursexrel (<code>-16.90</code>)</strong>:</p>
+<ul>
+<li>Extremely large negative coefficient with a high standard error and insignificant p-value (p = 0.9987), indicating no meaningful relationship between being in a sexual relationship and switching contraception methods.</li>
+</ul></li>
+</ol>
+<p><strong>Model Fit:</strong></p>
+<ul>
+<li><p><strong>Null deviance</strong> (7.205) vs.&nbsp;<strong>Residual deviance</strong> (6.702): Minimal improvement in fit.</p></li>
+<li><p><strong>AIC (12.702)</strong>: Indicates the overall model fit but is not interpretable in isolation.</p></li>
+</ul>
+<p><strong>Conclusion:</strong></p>
+<ul>
+<li><p>The intercept suggests a low likelihood of switching methods, but none of the predictors significantly explain the outcome.</p></li>
+<li><p>The small number of events (14 switches) and potential multicollinearity issues are likely limiting the model.</p></li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+
+<script>window.backupDefine = window.define; window.define = undefined;</script>
+<script type="text/javascript" src="./Nhu Vo Time Series Lab 2 FINAL_files/quarto-preview.js.download"></script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+<script type="text/javascript">
+  const options = {
+    origin: "",
+    search: "",
+    inputFile: "C:\Users\nmv2125\Downloads\Script v4.qmd",
+    isPresentation: false
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    window.QuartoPreview.init(options);
+  });
+</script>
+<div><div dir="ltr" class="fui-FluentProvider fui-FluentProviderr0 ___jdtuxv0 f19n0e5 fxugw4r f1o700av fk6fouc fkhj508 figsok6 f1i3iumi"></div></div><i tabindex="0" role="none" data-tabster-dummy="" aria-hidden="true" style="position: fixed; height: 1px; width: 1px; opacity: 0.001; z-index: -1; content-visibility: hidden; top: 0px; left: 0px;"></i></body></html>
